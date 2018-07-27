@@ -151,4 +151,57 @@
       statu = #{statu,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByNameAndStatus" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from exchange
+    where statu = 2
+    and name like #{goodName}
+  </select>
+
+  <delete id="deleteByUserIdAndExchangeId" parameterType="map">
+    delete from exchange
+    where user_id = #{userId}
+          and id = #{exchangeId}
+  </delete>
+
+  <select id="selectExchangeList" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM exchange
+  </select>
+  <update id="updateByUserIdExchangeId" parameterType="map">
+    update exchange
+    set statu = 1
+    where id = #{exchangeId}
+          and user_id = #{userId}
+  </update>
+
+  <select id="selectByUserId"  resultType="int" parameterType="Integer">
+  select count(1)
+  from exchange
+  where user_id = #{userId}
+  </select>
+
+
+  <select id="selectExchangeByUserId_U" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from exchange
+    where  user_id= #{userId}
+  </select>
+  <select id="selectExchangeByUserIdFinished_U" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from exchange
+    where  user_id= #{userId} and statu =#{i}
+  </select>
+  <select id="selectExchangeByExchangeUserIdFinished_U" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from exchange
+    where exchange_user_id = #{ExchangeuserId} and statu =#{i}
+  </select>
+
 </mapper>

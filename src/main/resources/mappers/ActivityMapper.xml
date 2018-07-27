@@ -34,7 +34,7 @@
       #{address,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{imageurl,jdbcType=VARCHAR}, #{statu,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.firstProject.pojo.Activity" >
+  <insert id="insertSelective" parameterType="com.firstProject.pojo.Activity" keyProperty="id" useGeneratedKeys="true">
     insert into activity
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -127,4 +127,54 @@
       statu = #{statu,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByNameAndActivityId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from activity
+    where statu = 1
+    <if test="activityName != null ">
+      and name like #{activityName}
+    </if>
+    <if test="activityId != null ">
+      and id = #{activityId}
+    </if>
+  </select>
+
+  <select id="selectByActivityIdUserId" parameterType="map" resultType="int">
+    select count(1) from activity
+    where user_id = #{userId}
+    and id = #{activityId}
+  </select>
+
+  <select id="selectActivityByActivityIdUserId" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/> from activity
+    where user_id = #{userId}
+    and id = #{activityId}
+  </select>
+
+  <select id="selectList" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    from activity
+    ORDER BY id asc
+  </select>
+
+  <select id="selectActivityId" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/> from activity
+    where id = #{activityId}
+  </select>
+
+  <select id="selectActivity" parameterType="map" resultType="int">
+    select count(1)
+    from activity
+    where id = #{activityId}
+  </select>
+
+  <select id="selectByUserIdU" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from activity
+    where user_id=#{userId}
+  </select>
 </mapper>

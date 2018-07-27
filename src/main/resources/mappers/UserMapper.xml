@@ -116,4 +116,37 @@
       imageurl = #{imageurl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="checkUsername" resultType="int" parameterType="string">
+    select count(1) from user
+    where username=#{userName}
+  </select>
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/>
+    from user
+    where username=#{userName}
+    and password=#{password}
+  </select>
+  <select id="selectUserId" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/> from user
+    where id = #{userId}
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from user
+    where id = #{userId}
+  </select>
+
+  <select id="exchangeSelectPhoneByUserId" parameterType="int" resultType="string">
+    select phone from user where id=#{userId}
+  </select>
+
+  <select id="checkPassword_U" resultType="java.lang.Integer" parameterType="map">
+    select
+      count(1)
+    from user
+    where password = #{password}
+          and   name= #{name}
+  </select>
 </mapper>

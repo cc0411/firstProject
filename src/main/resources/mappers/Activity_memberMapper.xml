@@ -7,6 +7,9 @@
       <idArg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
+  <sql id="Base_Column_List" >
+    activity_id,user_id
+  </sql>
   <delete id="deleteByPrimaryKey" parameterType="com.firstProject.pojo.Activity_memberKey" >
     delete from activity_member
     where activity_id = #{activityId,jdbcType=INTEGER}
@@ -35,4 +38,39 @@
       </if>
     </trim>
   </insert>
+
+  <select id="selectByActivityId" parameterType="int" resultType="int">
+      select count(1) from activity_member
+      where activity_id = #{activityId}
+  </select>
+
+  <select id="selectUserIdByActivityId" parameterType="int" resultType="java.lang.Integer">
+    select user_id from activity_member
+    where activity_id = #{activityId}
+  </select>
+
+  <select id="selectByActivityIdUserId" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/> from activity_member
+    where user_id = #{userId}
+    and activity_id = #{activityId}
+  </select>
+
+
+
+  <select id="selectByUserIdU" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from activity_member
+    where user_id=#{userId}
+  </select>
+  <select id="selectByActivityIdU" resultType="int" parameterType="int">
+    select count(1)
+    from activity_member
+    where activity_id=#{activityId}
+  </select>
+  <select id="selectPepleByActivityIdU" resultMap="BaseResultMap" parameterType="int">
+    select <include refid="Base_Column_List"/>
+    from activity_member
+    where activity_id=#{activityId}
+  </select>
 </mapper>

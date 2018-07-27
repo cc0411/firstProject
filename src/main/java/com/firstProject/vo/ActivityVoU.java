@@ -1,14 +1,11 @@
 package com.firstProject.vo;
 
-import java.util.List;
-
 /**
  * created by 吴家俊 on 2018/7/23.
  */
-public class ActivityVo {
+public class ActivityVoU {
 
     //活动信息
-    private int activityId;
     private String activityName;
     private String activityTime;
     private String Address;
@@ -22,12 +19,25 @@ public class ActivityVo {
     private String createrPhone;
     private String createrImageurl;
     //参与者信息
-    private List<UserVo> userVoList;
-    //参与人名字
     private String userNameAll;
 
-    public ActivityVo(int activityId, String activityName, String activityTime, String address, String introduction, String activityImageurl, Integer status, Integer peopleNumber, String createrName, String createrPhone, String createrImageurl, List<UserVo> userVoList, String userNameAll) {
-        this.activityId = activityId;
+    public String getCreaterName() {
+        return createrName;
+    }
+
+    public void setCreaterName(String createrName) {
+        this.createrName = createrName;
+    }
+
+    public String getUserNameAll() {
+        return userNameAll;
+    }
+
+    public void setUserNameAll(String userNameAll) {
+        this.userNameAll = userNameAll;
+    }
+
+    public ActivityVoU(String activityName, String activityTime, String address, String introduction, String activityImageurl, Integer status, Integer peopleNumber, String craeterName, String createrPhone, String createrImageurl) {
         this.activityName = activityName;
         this.activityTime = activityTime;
         Address = address;
@@ -35,23 +45,13 @@ public class ActivityVo {
         this.activityImageurl = activityImageurl;
         this.status = status;
         this.peopleNumber = peopleNumber;
-        this.createrName = createrName;
+        this.createrName = craeterName;
         this.createrPhone = createrPhone;
         this.createrImageurl = createrImageurl;
-        this.userVoList = userVoList;
-        this.userNameAll = userNameAll;
     }
 
-    public ActivityVo() {
+    public ActivityVoU() {
 
-    }
-
-    public int getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(int activityId) {
-        this.activityId = activityId;
     }
 
     public String getActivityName() {
@@ -110,12 +110,12 @@ public class ActivityVo {
         this.peopleNumber = peopleNumber;
     }
 
-    public String getCreaterName() {
+    public String getCraeterName() {
         return createrName;
     }
 
-    public void setCreaterName(String createrName) {
-        this.createrName = createrName;
+    public void setCraeterName(String craeterName) {
+        this.createrName = craeterName;
     }
 
     public String getCreaterPhone() {
@@ -132,21 +132,5 @@ public class ActivityVo {
 
     public void setCreaterImageurl(String createrImageurl) {
         this.createrImageurl = createrImageurl;
-    }
-
-    public List<UserVo> getUserVoList() {
-        return userVoList;
-    }
-
-    public void setUserVoList(List<UserVo> userVoList) {
-        this.userVoList = userVoList;
-    }
-
-    public String getUserNameAll() {
-        return userNameAll;
-    }
-
-    public void setUserNameAll(String userNameAll) {
-        this.userNameAll = userNameAll;
     }
 }
