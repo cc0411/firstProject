@@ -92,6 +92,7 @@ public class ActivityServiceImpl implements IActivityService {
         //得到发起人名字
         StringBuilder userNameAll = new StringBuilder(user.getName());
         //设置发起人信息
+        activityVo.setCreaterSignature(user.getSignature());
         activityVo.setCreaterName(user.getName());
         activityVo.setCreaterImageurl(user.getImageurl());
         activityVo.setCreaterPhone(user.getPhone());
@@ -209,6 +210,7 @@ public class ActivityServiceImpl implements IActivityService {
         activityVo.setStatus(activity.getStatu());
         activityVo.setActivityImageurl(activity.getImageurl());
         User user= userMapper.selectUserId(activity.getUserId());
+        activityVo.setCreaterSignature(user.getSignature());
         activityVo.setCreaterName(user.getName());
         activityVo.setCreaterImageurl(user.getImageurl());
         activityVo.setCreaterPhone(user.getPhone());

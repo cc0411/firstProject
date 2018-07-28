@@ -33,7 +33,7 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
     //登陆
-    @RequestMapping(value="login.do",method = RequestMethod.POST )
+    @RequestMapping(value="login.do")
     @ResponseBody
     public ServerResponse<User> login(HttpSession session, String userName, String password){
         ServerResponse<User> response=iUserService.login(userName,password);
@@ -44,7 +44,7 @@ public class UserController {
     }
 
     //注册
-    @RequestMapping(value = "register.do",method = RequestMethod.POST)
+    @RequestMapping(value = "register.do")
     @ResponseBody
     public ServerResponse<String> register(String userName, String password, String name) {
         User user=new User();
@@ -62,7 +62,7 @@ public class UserController {
 
 
     //用户注销
-    @RequestMapping(value ="logout.do",method = RequestMethod.POST)
+    @RequestMapping(value ="logout.do")
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session){
         session.removeAttribute(Const.REGULAR_USER);
@@ -70,7 +70,7 @@ public class UserController {
     }
 
     //我参与的活动列表
-    @RequestMapping(value ="activity_list.do",method = RequestMethod.POST)
+    @RequestMapping(value ="activity_list.do")
     @ResponseBody
     public ServerResponse activityList(HttpSession session, @RequestParam(value = "pageNum" , defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
@@ -83,7 +83,7 @@ public class UserController {
     }
 
     //我发布的活动列表
-    @RequestMapping(value = "my_activity_list.do",method = RequestMethod.POST)
+    @RequestMapping(value = "my_activity_list.do")
     @ResponseBody
     public ServerResponse MyActivityList(HttpSession session, @RequestParam(value = "pageNum" , defaultValue = "1") int pageNum,
                                          @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){

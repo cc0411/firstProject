@@ -21,12 +21,13 @@ public class ActivityVo {
     private String createrName;
     private String createrPhone;
     private String createrImageurl;
+    private String createrSignature;
     //参与者信息
     private List<UserVo> userVoList;
     //参与人名字
     private String userNameAll;
 
-    public ActivityVo(int activityId, String activityName, String activityTime, String address, String introduction, String activityImageurl, Integer status, Integer peopleNumber, String createrName, String createrPhone, String createrImageurl, List<UserVo> userVoList, String userNameAll) {
+    public ActivityVo(int activityId, String activityName, String activityTime, String address, String introduction, String activityImageurl, Integer status, Integer peopleNumber, String createrName, String createrPhone, String createrImageurl, String createrSignature, List<UserVo> userVoList, String userNameAll) {
         this.activityId = activityId;
         this.activityName = activityName;
         this.activityTime = activityTime;
@@ -38,6 +39,7 @@ public class ActivityVo {
         this.createrName = createrName;
         this.createrPhone = createrPhone;
         this.createrImageurl = createrImageurl;
+        this.createrSignature = createrSignature;
         this.userVoList = userVoList;
         this.userNameAll = userNameAll;
     }
@@ -132,6 +134,14 @@ public class ActivityVo {
 
     public void setCreaterImageurl(String createrImageurl) {
         this.createrImageurl = createrImageurl;
+    }
+
+    public String getCreaterSignature() {
+        return createrSignature;
+    }
+
+    public void setCreaterSignature(String createrSignature) {
+        this.createrSignature = createrSignature;
     }
 
     public List<UserVo> getUserVoList() {

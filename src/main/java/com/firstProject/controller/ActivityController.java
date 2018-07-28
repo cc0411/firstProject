@@ -57,7 +57,7 @@ public class ActivityController {
     //搜索活动（模糊查询）
     @RequestMapping("search.do")
     @ResponseBody
-    public ServerResponse search_activity(HttpSession session, String activityName, Integer activityId, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
+    public ServerResponse search_activity(HttpSession session, @RequestParam(value = "activityName",defaultValue = "") String activityName, Integer activityId, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
         User user = (User)session.getAttribute(Const.REGULAR_USER);
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
@@ -100,7 +100,7 @@ public class ActivityController {
     }
 
     //更新活动信息
-    @RequestMapping(value = "update_information.do",method = RequestMethod.POST)
+    @RequestMapping(value = "update_information.do")
     @ResponseBody
     public  ServerResponse <ActivityVo>update_information(Activity activity, Integer activityId,HttpSession session){
         User user = (User) session.getAttribute(Const.REGULAR_USER);

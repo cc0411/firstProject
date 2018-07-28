@@ -22,7 +22,7 @@ public class Activity_memberKeyController {
     @Autowired
     private IActivity_memberKeyService iActivity_memberKeyService;
 
-    @RequestMapping(value = "sign_up.do",method = RequestMethod.POST)
+    @RequestMapping(value = "sign_up.do")
     @ResponseBody
     public ServerResponse signUp(HttpSession session, Integer activityId, Activity_memberKey activity_memberKey){
         User user = (User) session.getAttribute(Const.REGULAR_USER);
@@ -33,7 +33,7 @@ public class Activity_memberKeyController {
     }
 
 
-    @RequestMapping(value = "cancel_sign_up.do",method = RequestMethod.POST)
+    @RequestMapping(value = "cancel_sign_up.do")
     @ResponseBody
     public ServerResponse cancelSignUp(HttpSession session, Integer activityId){
         User user = (User) session.getAttribute(Const.REGULAR_USER);
